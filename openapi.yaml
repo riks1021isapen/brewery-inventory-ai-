@@ -1,0 +1,48 @@
+openapi: 3.0.3
+info:
+  title: Brewery Inventory AI API
+  version: 0.1.0
+servers:
+  - url: https://example.com/api
+paths:
+  /orders/send:
+    post:
+      summary: Send purchase order email via Cloudflare Worker
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                vendorId:
+                  type: string
+                lines:
+                  type: array
+                  items:
+                    type: object
+      responses:
+        '200':
+          description: accepted
+  /pdf-confirm:
+    post:
+      summary: Confirm extracted PDF data and save transaction
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                lot_id:
+                  type: string
+                type:
+                  type: string
+                  enum: [IN, OUT]
+                quantity:
+                  type: number
+                extracted:
+                  type: object
+      responses:
+        '200':
+          description: saved
