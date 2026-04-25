@@ -1,0 +1,72 @@
+openapi: 3.0.3
+info:
+  title: Brewery Keg Management API
+  version: 0.1.0
+  description: Web/モバイル共通で利用する樽管理API
+servers:
+  - url: https://api.example.com
+paths:
+  /kegs:
+    get:
+      summary: 樽一覧取得
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Keg"
+    post:
+      summary: 樽登録
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Keg"
+      responses:
+        "201":
+          description: Created
+  /kegs/{kegId}:
+    patch:
+      summary: 樽ステータス更新
+      parameters:
+        - in: path
+          name: kegId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  $ref: "#/components/schemas/KegStatus"
+      responses:
+        "200":
+          description: Updated
+components:
+  schemas:
+    KegStatus:
+      type: string
+      enum: [IN_STOCK, IN_USE, CLEANING, RETURN_DUE]
+    Keg:
+      type: object
+      required: [id, beerName, capacityL, status, dueDate]
+      properties:
+        id:
+          type: string
+        beerName:
+          type: string
+        capacityL:
+          type: integer
+        status:
+          $ref: "#/components/schemas/KegStatus"
+        dueDate:
+          type: string
+          format: date
