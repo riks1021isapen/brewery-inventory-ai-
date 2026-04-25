@@ -1,0 +1,91 @@
+:root {
+  font-family: "Noto Sans JP", sans-serif;
+  color: #17202a;
+  background: #f4f7fa;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px;
+  display: grid;
+  gap: 16px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.form-card form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+label {
+  display: grid;
+  gap: 4px;
+  font-size: 14px;
+}
+
+input,
+select,
+button {
+  border-radius: 8px;
+  border: 1px solid #ccd5df;
+  padding: 10px;
+  font-size: 14px;
+}
+
+button {
+  background: #146c43;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 10px 8px;
+  border-bottom: 1px solid #e5e9ef;
+}
+
+.tag {
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.tag.IN_STOCK {
+  background: #e6f4ea;
+  color: #1e7e34;
+}
+
+.tag.IN_USE {
+  background: #fff4e5;
+  color: #af5f00;
+}
+
+.tag.CLEANING {
+  background: #e8f0fe;
+  color: #0b57d0;
+}
+
+.tag.RETURN_DUE {
+  background: #fce8e6;
+  color: #c5221f;
+}
